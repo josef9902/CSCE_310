@@ -12,27 +12,35 @@ session_start();
 
 		if(!empty($username) && !empty($password))
 		{
-			$query = "select * from users where username = '$username' limit 1";
-			$result = mysqli_query($con, $query);
-			if($result)
+			$query = "select * from users where user_name = '$username' limit 1";
+			$res = mysqli_query($con, $query);
+
+
+
+
+			if($res)
 			{
-				if($result && mysqli_num_rows($result) > 0)
+				if($res && mysqli_num_rows($res) > 0)
 				{
-					$user_data = mysqli_fetch_assoc($result);
-					if($user_data['password'] === $password)
+					$user_dta = mysqli_fetch_assoc($res);
+
+
+					if($user_dta['password'] === $password)
 					{
-						$_SESSION['user_id'] = $user_data['user_id'];
+						$_SESSION['user_id'] = $user_dta['user_id'];
 						header("Location: index.php");
 						die;
 					}
+
+
 				}
 			}
 			
-			echo "Wrong username or password";
+			echo "Username or password is incorrect";
 		}
     else
 		{
-			echo "Wrong username or password.";
+			echo "Username or password is incorrect";
 		}
 	}
 

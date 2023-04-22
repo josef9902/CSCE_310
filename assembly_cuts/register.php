@@ -8,12 +8,10 @@ session_start();
 	{
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
 		if(!empty($username) && !empty($password))
 		{
-			$user_id = random_num(1000);
-			$query = "insert into users (username,password) values ('$user_id', $username','$password')";
-
+			$user_id = random_number_generator(1000);
+			$query = "insert into users (user_id,user_name,password) values ('$user_id','$username','$password')";
 			$result = mysqli_query($con, $query);
 
 			header("Location: login.php");
@@ -21,7 +19,7 @@ session_start();
 		}
     else
 		{
-			echo "Info not valid";
+			echo "Please enter valid information.";
 		}
 	}
 ?>

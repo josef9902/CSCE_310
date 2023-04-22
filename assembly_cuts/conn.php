@@ -3,11 +3,8 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "Assembly_Cuts_DB";
+$dbname = "A_DB";
 
-if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
-{
-	die("failed to connect!");
-}
+$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname)
 
 ?>
