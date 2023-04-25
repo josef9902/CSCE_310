@@ -1,5 +1,7 @@
 <?php
-require_once 'functions.php';
+session_start();
+require_once '../functions.php';
+$user_dta = check_if_user_login($conn);
 include ('header.php');
 ?>
 
@@ -13,6 +15,7 @@ include ('header.php');
                 <th scope="col">ID</th>
                 <th scope="col">Barber</th>
                 <th scope="col">Customer</th>
+                <th scope="col">Time</th>
                 <th scope="col">View/Edit/Delete</th>
             </tr>
         </thead>

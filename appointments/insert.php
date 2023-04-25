@@ -1,24 +1,34 @@
 <?php
-require_once 'functions.php';
+session_start();
+require_once '../functions.php';
+$user_dta = check_if_user_login($conn);
 include ('header.php');
 
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $barber_id = $_POST['barber_id'] ?? '';
+    $customer_id = $_POST['customer_id'] ?? '';
+    $time = $_POST['time'] ?? '';
+
+    if(!empty($barber_id) && !empty($customer_id) && !empty($time)) {
+        $result = insert_data($conn, $barber_id, $customer_id, $time);
+        if($result) {
+            echo "<script>alert('Appointment inserted successfully!');window.location.href = 'index.php';</script>";
+            exit;
+        } else {
+            echo "<h3>Error: Appointment was not inserted!</h3>";
+        }
+    } else {
+        echo "<h4>Please fill all fields</h4>";
+    }
+}
 
 // Fetch available barber IDs from the database
-$barber_result = mysqli_query($conn, "SELECT BARBER_ID FROM BARBER");
-$barber_options = "";
-while ($row = mysqli_fetch_assoc($barber_result)) {
-    $barber_options .= "<option value='".$row['BARBER_ID']."'>".$row['BARBER_ID']."</option>";
-}
+$barber_options = get_barber_options($conn);
 
 // Fetch available customer IDs from the database
-//TODO: When login functionality is implemented, make it where the user can only select their own customer ID
-$customer_result = mysqli_query($conn, "SELECT CUSTOMER_ID FROM CUSTOMER");
-$customer_options = "";
-while ($row = mysqli_fetch_assoc($customer_result)) {
-    $customer_options .= "<option value='".$row['CUSTOMER_ID']."'>".$row['CUSTOMER_ID']."</option>";
-}
-?>
+$customer_options = get_customer_options($conn, $_SESSION['user_id']);
 
+?>
 
 <div class="container">
     <div class="row">

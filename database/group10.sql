@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2023 at 03:35 AM
+-- Generation Time: Apr 25, 2023 at 11:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -31,6 +31,14 @@ CREATE TABLE `ADMIN` (
   `ADMIN_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ADMIN`
+--
+
+INSERT INTO `ADMIN` (`ADMIN_ID`) VALUES
+(2),
+(20);
+
 -- --------------------------------------------------------
 
 --
@@ -44,13 +52,6 @@ CREATE TABLE `APPOINTMENTS` (
   `TIME` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `APPOINTMENTS`
---
-
-INSERT INTO `APPOINTMENTS` (`APP_ID`, `BARBER_ID`, `CUSTOMER_ID`, `TIME`) VALUES
-(7, 1, 2, '2023-04-10 20:28:00');
-
 -- --------------------------------------------------------
 
 --
@@ -59,7 +60,6 @@ INSERT INTO `APPOINTMENTS` (`APP_ID`, `BARBER_ID`, `CUSTOMER_ID`, `TIME`) VALUES
 
 CREATE TABLE `BARBER` (
   `BARBER_ID` int(11) NOT NULL,
-  `AVG_RATING` decimal(2,1) NOT NULL,
   `SERV_NAME` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -67,8 +67,9 @@ CREATE TABLE `BARBER` (
 -- Dumping data for table `BARBER`
 --
 
-INSERT INTO `BARBER` (`BARBER_ID`, `AVG_RATING`, `SERV_NAME`) VALUES
-(1, 3.0, 'Trim');
+INSERT INTO `BARBER` (`BARBER_ID`, `SERV_NAME`) VALUES
+(17, 'Trim'),
+(21, 'Trim');
 
 -- --------------------------------------------------------
 
@@ -85,7 +86,8 @@ CREATE TABLE `CUSTOMER` (
 --
 
 INSERT INTO `CUSTOMER` (`CUSTOMER_ID`) VALUES
-(2);
+(2),
+(18);
 
 -- --------------------------------------------------------
 
@@ -131,16 +133,20 @@ CREATE TABLE `USERS` (
   `FIRST_NAME` varchar(50) NOT NULL,
   `LAST_NAME` varchar(50) NOT NULL,
   `PH_NUM` varchar(15) NOT NULL,
-  `LOCATION` varchar(100) NOT NULL
+  `LOCATION` varchar(100) NOT NULL,
+  `PASSWORD` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `USERS`
 --
 
-INSERT INTO `USERS` (`USER_ID`, `USERNAME`, `FIRST_NAME`, `LAST_NAME`, `PH_NUM`, `LOCATION`) VALUES
-(1, 'billybob', 'billy', 'bob', '7777777777', 'Candyland'),
-(2, 'test_customer', 'test', 'customer', '7777777777', 'aggieland');
+INSERT INTO `USERS` (`USER_ID`, `USERNAME`, `FIRST_NAME`, `LAST_NAME`, `PH_NUM`, `LOCATION`, `PASSWORD`) VALUES
+(2, 'test_customer', 'test', 'customer', '7777777777', 'aggieland', '123'),
+(17, 'test_barber', 'test', 'barber', '7777777777', 'fdsfsdf', '1'),
+(18, 'johnwick', 'john', 'wick', '555-1234', 'wick cityy', '123'),
+(20, 'admin', 'admin', 'man', '7777777777', 'admin land', '123'),
+(21, 'adfsdafsd', 'dafdsfdsa', 'adfds', '555-1234', 'asdfs', 'asdfsda');
 
 --
 -- Indexes for dumped tables
@@ -201,7 +207,7 @@ ALTER TABLE `USERS`
 -- AUTO_INCREMENT for table `APPOINTMENTS`
 --
 ALTER TABLE `APPOINTMENTS`
-  MODIFY `APP_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `APP_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `REVIEW`
@@ -213,7 +219,7 @@ ALTER TABLE `REVIEW`
 -- AUTO_INCREMENT for table `USERS`
 --
 ALTER TABLE `USERS`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
