@@ -12,7 +12,6 @@
 
 4. Extract the following folders/files from the repository, and put it into the htdocs folder:
 - appointments/
-- database/
 - home/
 - connection.php
 - functions.php
