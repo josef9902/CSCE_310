@@ -45,6 +45,86 @@ function get_all_data()
     }
 }
 
+function get_all_review_data(){
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM REVIEW ORDER BY BARBER_ID ASC");
+
+    if (mysqli_num_rows($result) > 0) {
+        echo '<div class="col-12 pt-5"><h1>Reviews</h1></div>';
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<tr>';
+            echo '<th scope="row">' . $row['REV_ID'] . '</th>';
+            //Get the name of the barber from the USERS table
+            $barber_id = $row['BARBER_ID'];
+            $barber_name = mysqli_query($conn, "SELECT * FROM USERS WHERE USER_ID = '$barber_id'");
+            $barber_name = mysqli_fetch_assoc($barber_name);
+            echo '<td>' . $barber_name['FIRST_NAME'] . ' ' . $barber_name['LAST_NAME'] . '</td>';
+            //Get the name of the customer from the USERS table
+            $customer_id = $row['CUST_ID'];
+            $customer_name = mysqli_query($conn, "SELECT * FROM USERS WHERE USER_ID = '$customer_id'");
+            $customer_name = mysqli_fetch_assoc($customer_name);
+
+            //Get the review from the REVIEW table
+            $rating = $row['RATING'];
+            $description = $row['DESCRIPTION'];
+            //Format the time to be more readable
+            echo '<td>' . $customer_name['FIRST_NAME'] . ' ' . $customer_name['LAST_NAME'] . '</td>';
+            echo '<td>' . $rating . '</td>';
+            echo '<td>' . $description . '</td>';
+            echo '<td>';
+            echo '<div class="btn-group">';
+            echo '</div>';
+            echo '</td>';
+            echo '</tr>';
+        }
+    } else {
+        echo "<h3>No reviews as of this moment. Create one now!</h3>";
+    }
+}
+
+// The following functions generates a view of the reviews table
+function get_my_review_data($customer_name_curr)
+{
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM REVIEW WHERE CUST_ID = '$customer_name_curr' ");
+
+    if (mysqli_num_rows($result) > 0) {
+        echo '<div class="col-12 pt-5"><h1>My Reviews</h1></div>';
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<tr>';
+            echo '<th scope="row">' . $row['REV_ID'] . '</th>';
+            //Get the name of the barber from the USERS table
+            $barber_id = $row['BARBER_ID'];
+            $barber_name = mysqli_query($conn, "SELECT * FROM USERS WHERE USER_ID = '$barber_id'");
+            $barber_name = mysqli_fetch_assoc($barber_name);
+            echo '<td>' . $barber_name['FIRST_NAME'] . ' ' . $barber_name['LAST_NAME'] . '</td>';
+            //Get the name of the customer from the USERS table
+            $customer_id = $row['CUST_ID'];
+            $customer_name = mysqli_query($conn, "SELECT * FROM USERS WHERE USER_ID = '$customer_id'");
+            $customer_name = mysqli_fetch_assoc($customer_name);
+
+            //Get the review from the REVIEW table
+            $rating = $row['RATING'];
+            $description = $row['DESCRIPTION'];
+            //Format the time to be more readable
+            echo '<td>' . $customer_name['FIRST_NAME'] . ' ' . $customer_name['LAST_NAME'] . '</td>';
+            echo '<td>' . $rating . '</td>';
+            echo '<td>' . $description . '</td>';
+            echo '<td>';
+            echo '<div class="btn-group">';
+            echo '<a href="update.php?id=' . $row['REV_ID'] . '" class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Edit</a>';
+            echo '<a href="delete.php?id=' . $row['REV_ID'] . '" class="btn btn-sm btn-outline-danger" role="button" aria-pressed="true">Delete</a>';
+            echo '</div>';
+            echo '</td>';
+            echo '</tr>';
+        }
+    } else {
+        echo "<h3>No reviews as of this moment. Create one now!</h3>";
+    }
+}
+
 function get_all_edit_data()
 {
     global $conn;
@@ -116,6 +196,19 @@ function get_customer_options($conn)
 
     return $customer_options;
 }
+function get_customer_option($conn, $customer_name_curr)
+{
+    $customer_result = mysqli_query($conn, "SELECT CUSTOMER_ID FROM CUSTOMER");
+    $customer_options = "";
+    while ($row = mysqli_fetch_assoc($customer_result)) {
+        $customer_name = mysqli_query($conn, "SELECT FIRST_NAME, LAST_NAME FROM USERS WHERE USER_ID = " . $row['CUSTOMER_ID']);
+        $customer_row = mysqli_fetch_assoc($customer_name);
+        if ($row['CUSTOMER_ID'] == $customer_name_curr)
+            $customer_options .= "<option value='" . $row['CUSTOMER_ID'] . "'>" . $customer_row['FIRST_NAME'] . ' ' . $customer_row['LAST_NAME'] . "</option>";
+    }
+
+    return $customer_options;
+}
 
 function insert_data($conn, $barber_id, $customer_id, $time)
 {
@@ -136,6 +229,26 @@ function insert_data($conn, $barber_id, $customer_id, $time)
     }
 }
 
+// Add a new review into the table
+function insert_review_data($conn, $barber_id, $customer_id, $rating, $description)
+{
+    // Escape special characters.
+    $barber_id = mysqli_real_escape_string($conn, $barber_id);
+    $customer_id = mysqli_real_escape_string($conn, $customer_id);
+    $rating = mysqli_real_escape_string($conn, $rating);
+    $description = mysqli_real_escape_string($conn, $description);
+
+    // Insert data into database
+    $insert_query = mysqli_query($conn, "INSERT INTO REVIEW(BARBER_ID, CUST_ID, RATING, DESCRIPTION) VALUES('$barber_id', '$customer_id', '$rating', '$description')");
+
+    // Check if data has been inserted
+    if ($insert_query) {
+        echo "<script>alert('Review inserted successfully!');window.location.href = 'index.php';</script>";
+        exit;
+    } else {
+        echo "<h3>Error: Review was not inserted!</h3>";
+    }
+}
 
 
 //Update.php - Collect Data to update entry in appointments table
@@ -146,6 +259,18 @@ function update_get()
         global $conn;
         $id = $_GET['id'];
         $get_id = mysqli_query($conn, "SELECT * FROM APPOINTMENTS WHERE APP_ID='$id'");
+        if (mysqli_num_rows($get_id) === 1) {
+            $row = mysqli_fetch_assoc($get_id);
+            return ($row);
+        }
+    }
+}
+
+function reviews_get(){
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        global $conn;
+        $id = $_GET['id'];
+        $get_id = mysqli_query($conn, "SELECT * FROM REVIEW WHERE REV_ID='$id'");
         if (mysqli_num_rows($get_id) === 1) {
             $row = mysqli_fetch_assoc($get_id);
             return ($row);
@@ -172,6 +297,24 @@ function update_appointment($id, $barber_id, $customer_id, $time)
     }
 }
 
+function update_review($id, $barber_id, $customer_id, $rating, $description){
+    global $conn;
+    $id = mysqli_real_escape_string($conn, $id);
+    $barber_id = mysqli_real_escape_string($conn, $barber_id);
+    $customer_id = mysqli_real_escape_string($conn, $customer_id);
+    $rating = mysqli_real_escape_string($conn, $rating);
+    $description = mysqli_real_escape_string($conn, $description);
+
+    $update_query = mysqli_query($conn, "UPDATE REVIEW SET BARBER_ID='$barber_id', CUST_ID='$customer_id', RATING='$rating', DESCRIPTION='$description' WHERE REV_ID='$id'");
+    #echo query
+    if ($update_query) {
+        echo "<script>alert('Review Updated');window.location.href = 'index.php';</script>";
+        exit;
+    } else {
+        echo "<h3>Error updating reviews</h3>";
+    }
+}
+
 //Delete.php - Delete entry from appointments table
 //The following function deletes an appointment entry from the appointments table. It grabs the id from the browser session
 //and checks if it is found in the database. If it is, it deletes the entry. If not, it tells the user that something went wrong.
@@ -187,6 +330,23 @@ function delete()
             exit;
         } else {
             echo "<script>alert('Something went wrong. Appointment was not removed.');window.location.href = 'index.php';</script>";
+        }
+    }
+}
+
+
+function delete_review()
+{
+    global $conn;
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $userid = $_GET['id'];
+        $delete_user = mysqli_query($conn, "DELETE FROM REVIEW WHERE REV_ID='$userid'");
+
+        if ($delete_user) {
+            echo "<script>alert('Review removed.');window.location.href = 'index.php';</script>";
+            exit;
+        } else {
+            echo "<script>alert('Something went wrong. Review was not removed.');window.location.href = 'index.php';</script>";
         }
     }
 }

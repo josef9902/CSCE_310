@@ -12,7 +12,7 @@ session_start();
 
 		if(!empty($username) && !empty($password))
 		{
-			$query = "select * from users where user_name = '$username' limit 1";
+			$query = "select * from users where username = '$username' limit 1";
 			$res = mysqli_query($con, $query);
 
 

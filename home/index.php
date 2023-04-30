@@ -1,5 +1,5 @@
 <?php 
-session_start();
+    session_start();
 	include("../connection.php");
 	include("../functions.php");
 	$user_dta = check_if_user_login($conn);

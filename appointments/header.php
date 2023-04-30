@@ -1,5 +1,6 @@
 <?php 
-session_start();
+if(!isset($_SESSION))
+  session_start();
   include("../connection.php");
   // include("../functions.php");
   $user_dta = check_if_user_login($conn);
@@ -27,7 +28,10 @@ session_start();
         <a class="nav-link" href="../appointments/index.php">Appointments</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Reviews</a>
+        <a class="nav-link" href="../my_reviews/index.php">My Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../barber_ratings/index.php">Barber Ratings</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Services</a>
