@@ -29,7 +29,7 @@ session_start();
         $result = mysqli_query($conn, $customer_entry);
       } else if ($user_type === "BARBER") {
         //Insert into barber table, the user id
-        $barber_entry = "INSERT INTO BARBER (BARBER_ID, SERV_NAME) VALUES ((SELECT USER_ID FROM USERS WHERE USERNAME = '$username'), 'Full Service');";
+        $barber_entry = "INSERT INTO BARBER (BARBER_ID, SERV_ID) VALUES ((SELECT USER_ID FROM USERS WHERE USERNAME = '$username'), '3');";
         $result = mysqli_query($conn, $barber_entry);
       } else if ($user_type === "ADMIN") {
         //Insert into admin table, the user id
