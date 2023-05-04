@@ -9,6 +9,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
   $last_name = mysqli_real_escape_string($conn, $_POST['last-name']);
   $phone_number = mysqli_real_escape_string($conn, $_POST['phone-number']);
   $location = mysqli_real_escape_string($conn, $_POST['location']);
+  if (is_barber($conn, $_SESSION['USER_ID'])) {
+    $service = mysqli_real_escape_string($conn, $_POST['service']);
+    $query = "UPDATE BARBER SET SERV_ID = '$service' WHERE BARBER_ID = " . $user_dta['USER_ID'];
+    $result = mysqli_query($conn, $query);
+  }
   $password = mysqli_real_escape_string($conn, $_POST['password']);
 
   $query = "UPDATE USERS SET FIRST_NAME = '$first_name', LAST_NAME = '$last_name', PH_NUM = '$phone_number', LOCATION = '$location'";

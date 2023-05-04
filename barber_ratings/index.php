@@ -15,6 +15,7 @@ include ('../appointments/header.php');
                 <th scope="col">Customer</th>
                 <th scope="col">Rating</th>
                 <th scope="col">Description</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>

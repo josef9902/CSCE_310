@@ -2,6 +2,9 @@
 session_start();
 require_once '../functions.php';
 $user_dta = check_if_user_login($conn);
+$barber_check = is_barber($conn, $user_dta['USER_ID']);
+$admin_check = is_admin($conn, $user_dta['USER_ID']);
+$customer_check = is_customer($conn, $user_dta['USER_ID']);
 include ('header.php');
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -26,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 $barber_options = get_barber_options($conn);
 
 // Fetch available customer IDs from the database
-$customer_options = get_customer_options($conn, $_SESSION['user_id']);
+$customer_options = get_customer_options($conn);
 
 ?>
 
@@ -44,7 +47,11 @@ $customer_options = get_customer_options($conn, $_SESSION['user_id']);
                 <div class="form-group">
                     <label for="customer_id">Customer ID</label>
                     <select name="customer_id" class="form-control" id="customer_id">
+                        <?php if ($admin_check || $barber_check) : ?>
                         <?php echo $customer_options; ?>
+                        <?php else : ?>
+                        <option value="<?php echo $_SESSION['USER_ID']; ?>"><?php echo $user_dta['FIRST_NAME'] . ' '. $user_dta['LAST_NAME']; ?></option>
+                        <?php endif; ?>
                     </select>
                 </div>
                 <div class="form-group">

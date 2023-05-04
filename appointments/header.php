@@ -4,6 +4,9 @@ if(!isset($_SESSION))
   include("../connection.php");
   // include("../functions.php");
   $user_dta = check_if_user_login($conn);
+  $admin_check = is_admin($conn, $user_dta['USER_ID']);
+  $customer_check = is_customer($conn, $user_dta['USER_ID']);
+  $barber_check = is_barber($conn, $user_dta['USER_ID']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,14 +30,16 @@ if(!isset($_SESSION))
       <li class="nav-item">
         <a class="nav-link" href="../appointments/index.php">Appointments</a>
       </li>
+      <?php if($customer_check || $barber_check): ?>
       <li class="nav-item">
         <a class="nav-link" href="../my_reviews/index.php">My Reviews</a>
       </li>
+      <?php endif; ?>
       <li class="nav-item">
         <a class="nav-link" href="../barber_ratings/index.php">Barber Ratings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Services</a>
+        <a class="nav-link" href="../our_services/index.php">Services</a>
       </li>
       <?php if($user_dta != NULL): ?>
       <li class="nav-item">

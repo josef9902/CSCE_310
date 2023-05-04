@@ -52,11 +52,11 @@ $customer_options = get_customer_option($conn, $user_dta['USERNAME']);
                 </div>
                 <div class="form-group">
                     <label for="rating">Rating (1-5)</label>
-                    <input type="number" name="rating" class="form-control" id="rating"  min=1 max=5>
+                    <input type="number" name="rating" class="form-control" value= "<?php echo $row['RATING']; ?>" id="rating"  min=1 max=5>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" name="description" class="form-control" id="description">
+                    <input type="text" name="description" class="form-control" value = "<?php echo $row['DESCRIPTION']; ?>" id="description">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

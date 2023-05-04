@@ -60,16 +60,16 @@ CREATE TABLE `APPOINTMENTS` (
 
 CREATE TABLE `BARBER` (
   `BARBER_ID` int(11) NOT NULL,
-  `SERV_NAME` varchar(50) NOT NULL
+  `SERV_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `BARBER`
 --
 
-INSERT INTO `BARBER` (`BARBER_ID`, `SERV_NAME`) VALUES
-(17, 'Trim'),
-(21, 'Trim');
+INSERT INTO `BARBER` (`BARBER_ID`, `SERV_ID`) VALUES
+(17, 1),
+(21, 1);
 
 -- --------------------------------------------------------
 
@@ -110,6 +110,7 @@ CREATE TABLE `REVIEW` (
 --
 
 CREATE TABLE `SERVICES` (
+  `SERV_ID` int(11) NOT NULL,
   `SERV_NAME` varchar(50) NOT NULL,
   `PRICE` decimal(6,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -118,8 +119,8 @@ CREATE TABLE `SERVICES` (
 -- Dumping data for table `SERVICES`
 --
 
-INSERT INTO `SERVICES` (`SERV_NAME`, `PRICE`) VALUES
-('Trim', 5.00);
+INSERT INTO `SERVICES` (`SERV_ID`, `SERV_NAME`, `PRICE`) VALUES
+(1,'Trim', 5.00);
 
 -- --------------------------------------------------------
 
@@ -171,7 +172,7 @@ ALTER TABLE `APPOINTMENTS`
 --
 ALTER TABLE `BARBER`
   ADD PRIMARY KEY (`BARBER_ID`),
-  ADD KEY `SERV_NAME` (`SERV_NAME`);
+  ADD KEY `SERV_ID` (`SERV_ID`);
 
 --
 -- Indexes for table `CUSTOMER`
@@ -191,7 +192,7 @@ ALTER TABLE `REVIEW`
 -- Indexes for table `SERVICES`
 --
 ALTER TABLE `SERVICES`
-  ADD PRIMARY KEY (`SERV_NAME`);
+  ADD PRIMARY KEY (`SERV_ID`);
 
 --
 -- Indexes for table `USERS`
@@ -222,6 +223,13 @@ ALTER TABLE `USERS`
   MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
+-- AUTO_INCREMENT for table `SERVICES`
+--
+ALTER TABLE `SERVICES`
+  MODIFY `SERV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+
+--
 -- Constraints for dumped tables
 --
 
@@ -243,7 +251,7 @@ ALTER TABLE `APPOINTMENTS`
 --
 ALTER TABLE `BARBER`
   ADD CONSTRAINT `barber_ibfk_1` FOREIGN KEY (`BARBER_ID`) REFERENCES `USERS` (`USER_ID`),
-  ADD CONSTRAINT `barber_ibfk_2` FOREIGN KEY (`SERV_NAME`) REFERENCES `SERVICES` (`SERV_NAME`);
+  ADD CONSTRAINT `barber_ibfk_2` FOREIGN KEY (`SERV_ID`) REFERENCES `SERVICES` (`SERV_ID`);
 
 --
 -- Constraints for table `CUSTOMER`

@@ -7,6 +7,8 @@ $user_dta = check_if_user_login($conn);
 // Remove all references to the user in the database
 $user_id = $user_dta['USER_ID'];
 mysqli_query($conn, "DELETE FROM APPOINTMENTS WHERE CUSTOMER_ID = $user_id OR BARBER_ID = $user_id");
+//Remove references in REVIEWS table
+mysqli_query($conn, "DELETE FROM REVIEWS WHERE CUSTOMER_ID = $user_id OR BARBER_ID = $user_id");
 //Remove references in BARBERS and CUSTOMERS tables
 mysqli_query($conn, "DELETE FROM BARBER WHERE BARBER_ID = $user_id");
 mysqli_query($conn, "DELETE FROM CUSTOMER WHERE CUSTOMER_ID = $user_id");

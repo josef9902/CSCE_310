@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<h3>Error: Appointment was not inserted!</h3>";
         }
     } else {
-        echo "<h4>Please fill all fields</h4>";
+        echo "<script>alert('Please enter valid information!');window.location.href = 'insert.php';</script>";
     }
 }
 

@@ -3,6 +3,9 @@ session_start();
 include("../connection.php");
 include("../functions.php");
 $user_dta = check_if_user_login($conn);
+$barber_check = is_barber($conn, $user_dta['USER_ID']);
+$admin_check = is_admin($conn, $user_dta['USER_ID']);
+$customer_check = is_customer($conn, $user_dta['USER_ID']);
 include('../appointments/header.php');
 
 if (isset($_SESSION["ERROR_MESSAGE"])) {
@@ -13,6 +16,10 @@ if (isset($_SESSION["ERROR_MESSAGE"])) {
 if (isset($_SESSION["SUCCESS_MESSAGE"])) {
     echo "<div class='alert alert-success' role='alert'>" . $_SESSION["SUCCESS_MESSAGE"] . "</div>";
     unset($_SESSION["SUCCESS_MESSAGE"]);
+}
+
+if ($barber_check) {
+    $service_options = get_services_choice($conn);
 }
 ?>
 <form method="post" action="edit-profile-result.php">
@@ -32,6 +39,14 @@ if (isset($_SESSION["SUCCESS_MESSAGE"])) {
     <label for="location">Location:</label>
     <input type="text" class="form-control" id="location" name="location" value="<?php echo $user_dta['LOCATION']; ?>">
   </div>
+  <?php if (is_barber($conn, $_SESSION['USER_ID'])) : ?>
+  <div class="form-group">
+    <label for="service">Service:</label>
+    <select name="service" class="form-control" id="service">
+    <?php echo $service_options; ?>
+    </select>
+  </div>
+  <?php endif; ?>
   <div class="form-group">
     <label for="password">Password:</label>
     <input type="password" class="form-control" id="password" name="password">

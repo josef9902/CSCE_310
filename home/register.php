@@ -29,8 +29,12 @@ session_start();
         $result = mysqli_query($conn, $customer_entry);
       } else if ($user_type === "BARBER") {
         //Insert into barber table, the user id
-        $barber_entry = "INSERT INTO BARBER (BARBER_ID, SERV_NAME) VALUES ((SELECT USER_ID FROM USERS WHERE USERNAME = '$username'), 'Trim');";
+        $barber_entry = "INSERT INTO BARBER (BARBER_ID, SERV_NAME) VALUES ((SELECT USER_ID FROM USERS WHERE USERNAME = '$username'), 'Full Service');";
         $result = mysqli_query($conn, $barber_entry);
+      } else if ($user_type === "ADMIN") {
+        //Insert into admin table, the user id
+        $admin_entry = "INSERT INTO ADMIN (ADMIN_ID) VALUES ((SELECT USER_ID FROM USERS WHERE USERNAME = '$username'));";
+        $result = mysqli_query($conn, $admin_entry);
       } else {
         //Generate a javascript alert that tells invalid user type and redirect user to register page
         echo "<script>alert('Invalid User Type!');window.location.href = 'register.php';</script>";
@@ -85,6 +89,7 @@ session_start();
                   <select name="user-type" id="user-type">
                     <option value="BARBER">Barber</option>
                     <option value="CUSTOMER">Customer</option>
+                    <option value="ADMIN">Admin</option>
                   </select>
                   <br><br>
                   <input type="submit" id="create-btn" value="Create Account" name="submit"></input>
