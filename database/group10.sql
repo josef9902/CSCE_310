@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2023 at 11:33 PM
+-- Generation Time: May 04, 2023 at 09:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,8 +36,9 @@ CREATE TABLE `ADMIN` (
 --
 
 INSERT INTO `ADMIN` (`ADMIN_ID`) VALUES
-(2),
-(20);
+(20),
+(23),
+(29);
 
 -- --------------------------------------------------------
 
@@ -51,6 +52,14 @@ CREATE TABLE `APPOINTMENTS` (
   `CUSTOMER_ID` int(11) NOT NULL,
   `TIME` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `APPOINTMENTS`
+--
+
+INSERT INTO `APPOINTMENTS` (`APP_ID`, `BARBER_ID`, `CUSTOMER_ID`, `TIME`) VALUES
+(20, 17, 2, '2023-05-10 22:14:00'),
+(22, 17, 2, '2023-06-03 13:45:00');
 
 -- --------------------------------------------------------
 
@@ -68,8 +77,9 @@ CREATE TABLE `BARBER` (
 --
 
 INSERT INTO `BARBER` (`BARBER_ID`, `SERV_ID`) VALUES
-(17, 1),
-(21, 1);
+(17, 3),
+(21, 3),
+(28, 3);
 
 -- --------------------------------------------------------
 
@@ -103,6 +113,13 @@ CREATE TABLE `REVIEW` (
   `DESCRIPTION` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `REVIEW`
+--
+
+INSERT INTO `REVIEW` (`REV_ID`, `BARBER_ID`, `CUST_ID`, `RATING`, `DESCRIPTION`) VALUES
+(1, 17, 2, 2.0, 'not good');
+
 -- --------------------------------------------------------
 
 --
@@ -120,7 +137,9 @@ CREATE TABLE `SERVICES` (
 --
 
 INSERT INTO `SERVICES` (`SERV_ID`, `SERV_NAME`, `PRICE`) VALUES
-(1,'Trim', 5.00);
+(3, 'Full Service', 323.00),
+(4, 'Trim', 15.00),
+(5, 'Hair wash', 6.00);
 
 -- --------------------------------------------------------
 
@@ -147,7 +166,10 @@ INSERT INTO `USERS` (`USER_ID`, `USERNAME`, `FIRST_NAME`, `LAST_NAME`, `PH_NUM`,
 (17, 'test_barber', 'test', 'barber', '7777777777', 'fdsfsdf', '1'),
 (18, 'johnwick', 'john', 'wick', '555-1234', 'wick cityy', '123'),
 (20, 'admin', 'admin', 'man', '7777777777', 'admin land', '123'),
-(21, 'adfsdafsd', 'dafdsfdsa', 'adfds', '555-1234', 'asdfs', 'asdfsda');
+(21, 'adfsdafsd', 'dafdsfdsa', 'adfds', '555-1234', 'asdfs', 'asdfsda'),
+(23, 'test_admin', 'test', 'admin', '555-1234', 'dfdfd', '1'),
+(28, 'a_barber', 'ryan', 'jones', '555-1234', 'aggieland', '1'),
+(29, 'another_admin', 'another', 'admin', '555-1234', 'dfd', '1');
 
 --
 -- Indexes for dumped tables
@@ -208,26 +230,25 @@ ALTER TABLE `USERS`
 -- AUTO_INCREMENT for table `APPOINTMENTS`
 --
 ALTER TABLE `APPOINTMENTS`
-  MODIFY `APP_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `APP_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `REVIEW`
 --
 ALTER TABLE `REVIEW`
-  MODIFY `REV_ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `USERS`
---
-ALTER TABLE `USERS`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `REV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `SERVICES`
 --
 ALTER TABLE `SERVICES`
-  MODIFY `SERV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `SERV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
+--
+-- AUTO_INCREMENT for table `USERS`
+--
+ALTER TABLE `USERS`
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
