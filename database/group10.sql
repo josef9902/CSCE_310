@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 04, 2023 at 09:08 PM
+-- Generation Time: May 04, 2023 at 11:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,7 +38,9 @@ CREATE TABLE `ADMIN` (
 INSERT INTO `ADMIN` (`ADMIN_ID`) VALUES
 (20),
 (23),
-(29);
+(29),
+(31),
+(39);
 
 -- --------------------------------------------------------
 
@@ -52,14 +54,6 @@ CREATE TABLE `APPOINTMENTS` (
   `CUSTOMER_ID` int(11) NOT NULL,
   `TIME` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `APPOINTMENTS`
---
-
-INSERT INTO `APPOINTMENTS` (`APP_ID`, `BARBER_ID`, `CUSTOMER_ID`, `TIME`) VALUES
-(20, 17, 2, '2023-05-10 22:14:00'),
-(22, 17, 2, '2023-06-03 13:45:00');
 
 -- --------------------------------------------------------
 
@@ -113,13 +107,6 @@ CREATE TABLE `REVIEW` (
   `DESCRIPTION` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `REVIEW`
---
-
-INSERT INTO `REVIEW` (`REV_ID`, `BARBER_ID`, `CUST_ID`, `RATING`, `DESCRIPTION`) VALUES
-(1, 17, 2, 2.0, 'not good');
-
 -- --------------------------------------------------------
 
 --
@@ -138,7 +125,7 @@ CREATE TABLE `SERVICES` (
 
 INSERT INTO `SERVICES` (`SERV_ID`, `SERV_NAME`, `PRICE`) VALUES
 (3, 'Full Service', 323.00),
-(4, 'Trim', 15.00),
+(4, 'Hair Trim', 15.00),
 (5, 'Hair wash', 6.00);
 
 -- --------------------------------------------------------
@@ -169,7 +156,9 @@ INSERT INTO `USERS` (`USER_ID`, `USERNAME`, `FIRST_NAME`, `LAST_NAME`, `PH_NUM`,
 (21, 'adfsdafsd', 'dafdsfdsa', 'adfds', '555-1234', 'asdfs', 'asdfsda'),
 (23, 'test_admin', 'test', 'admin', '555-1234', 'dfdfd', '1'),
 (28, 'a_barber', 'ryan', 'jones', '555-1234', 'aggieland', '1'),
-(29, 'another_admin', 'another', 'admin', '555-1234', 'dfd', '1');
+(29, 'another_admin', 'another', 'admin', '555-1234', 'dfd', '1'),
+(31, 'bob_will', 'williams', 'bob', '555-1234', 'aggieland', '1'),
+(39, 'john_cena', 'john', 'cena', '555-1234', 'wwe', '1');
 
 --
 -- Indexes for dumped tables
@@ -230,25 +219,25 @@ ALTER TABLE `USERS`
 -- AUTO_INCREMENT for table `APPOINTMENTS`
 --
 ALTER TABLE `APPOINTMENTS`
-  MODIFY `APP_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `APP_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `REVIEW`
 --
 ALTER TABLE `REVIEW`
-  MODIFY `REV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `REV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `SERVICES`
 --
 ALTER TABLE `SERVICES`
-  MODIFY `SERV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `SERV_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `USERS`
 --
 ALTER TABLE `USERS`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables
