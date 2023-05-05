@@ -1,4 +1,4 @@
-/* This is a PHP script that updates an appointment in a database. It starts a session, includes
+<!-- /* This is a PHP script that updates an appointment in a database. It starts a session, includes
 necessary functions, and checks if the user is logged in. It then fetches available barber and
 customer IDs from the database and sets the default values of the select boxes to the barber and
 customer IDs of the appointment being updated. It then gets the appointment data to be updated and
@@ -8,7 +8,7 @@ the database. Finally, it displays a form to update the appointment data.
 Author: Thierry David
 Functionality Set Two (Scheduling)
 
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

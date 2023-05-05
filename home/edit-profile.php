@@ -1,4 +1,4 @@
-/* This is a PHP code that displays a form for editing user profile information. It starts by starting
+<!-- /* This is a PHP code that displays a form for editing user profile information. It starts by starting
 a session and including necessary files for database connection and functions. It then checks if the
 user is logged in and if they are a barber, admin, or customer. If the user has any error or success
 messages, they are displayed. If the user is a barber, a dropdown menu for selecting services is
@@ -8,7 +8,7 @@ Finally, there are buttons for saving changes and deleting the account.
 Author: Nitin Pendekanti
 Functionality Set One (User Accounts)
 
-*/
+*/ -->
 <?php
 session_start();
 include("../connection.php");

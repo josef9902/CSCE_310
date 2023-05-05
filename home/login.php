@@ -1,4 +1,4 @@
-/* This is a PHP code that handles user login functionality. It starts a session, includes necessary
+<!-- /* This is a PHP code that handles user login functionality. It starts a session, includes necessary
 files for database connection and functions, and checks if the request method is POST. If it is, it
 retrieves the username and password from the form data, checks if they are not empty, and queries
 the database to find a user with the given username. If a user is found, it checks if the password
@@ -9,7 +9,7 @@ for a login form and a button to create a new account.
 Author: Nitin Pendekanti
 Functionality Set One (User Accounts)
 
-*/
+*/ -->
 <?php
 
 session_start();

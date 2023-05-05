@@ -1,4 +1,4 @@
-/* This is a PHP code that displays a review for a barber service. It retrieves data from a database
+<!-- /* This is a PHP code that displays a review for a barber service. It retrieves data from a database
 using SQL queries and displays it on a webpage using HTML and PHP. The code gets the barber name,
 customer name, service name, rating, and description from the database and displays them on the
 webpage. It also includes a header and footer file for the webpage.
@@ -6,7 +6,7 @@ webpage. It also includes a header and footer file for the webpage.
 Author: Josef Munduchirakal
 Functionality Set Four: Reviews
 
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

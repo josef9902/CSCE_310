@@ -1,4 +1,4 @@
-/* This is a PHP code that displays a table of appointments. It starts a session, includes a file with
+<!-- /* This is a PHP code that displays a table of appointments. It starts a session, includes a file with
 necessary functions, checks if the user is logged in, and includes a header file. It then creates a
 container with a button to create a new appointment and a table to display all appointments. The
 table has columns for ID, Barber, Customer, Time, and View/Edit/Delete buttons. The `get_all_data()`
@@ -8,7 +8,7 @@ file is included.
 Author: Thierry David
 Functionality Set Two (Scheduling)
 
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

@@ -1,4 +1,4 @@
-/* This is a PHP code that displays information about a specific service, including its name, price,
+<!-- /* This is a PHP code that displays information about a specific service, including its name, price,
 and available barbers who can provide the service. It starts by checking if the user is logged in
 and their role (barber, admin, or customer) using functions from an external file. It then retrieves
 information about the service from the database using its ID, including its name and price. It also
@@ -8,7 +8,7 @@ file.
 
 Author: Charles Walker
 Functionality Set Three: Services
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

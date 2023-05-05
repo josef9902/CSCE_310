@@ -1,4 +1,4 @@
-/* This is a PHP code that creates a form to insert a new service into a database. It starts by
+<!-- /* This is a PHP code that creates a form to insert a new service into a database. It starts by
 checking if the user is logged in and if they have the necessary permissions to create a new
 service. If the form is submitted via POST method, it checks if the required fields are filled and
 if the service name already exists in the database. If everything is valid, it inserts the new
@@ -8,7 +8,7 @@ service into the database. Finally, it includes the header and footer files for 
 Author: Charles Walker
 Functionality Set Three: Services
 
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

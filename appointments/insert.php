@@ -1,4 +1,4 @@
-/* This is a PHP code that creates a form for creating a new appointment. It starts by starting a
+<!-- /* This is a PHP code that creates a form for creating a new appointment. It starts by starting a
 session and including a file with some functions. It then checks if the user is logged in and if
 they are a barber, admin, or customer. It includes a header file and checks if the request method is
 POST. If it is, it gets the barber ID, customer ID, and appointment time from the form and inserts
@@ -11,7 +11,7 @@ appointment data for editing. It ends by including a footer file.
 Author: Thierry David
 Functionality Set Two (Scheduling)
 
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

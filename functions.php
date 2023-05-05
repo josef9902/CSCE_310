@@ -1,10 +1,10 @@
-
+<!-- 
 /**
 The following functions are used for all four functionality sets, and are helper functions to
 create read, update, and delete entries in tables in the database. 
 
 THese functions were created by various group members
-*/
+*/ -->
 
 <?php
 require_once('connection.php');

@@ -1,4 +1,4 @@
-/* This is a PHP code that generates the navigation bar for a website. It starts by checking if a
+<!-- /* This is a PHP code that generates the navigation bar for a website. It starts by checking if a
 session is set and starts one if it is not set. It then includes the connection.php file which
 contains the database connection details. It then checks if the user is logged in and if they are an
 admin, customer, or barber. Based on this, it displays different links in the navigation bar.
@@ -6,7 +6,7 @@ Finally, it generates the HTML code for the navigation bar using Bootstrap class
 
 Author: Thierry David
 Functionality Set Two (Scheduling)
-*/
+*/ -->
 <?php
 if (!isset($_SESSION))
   session_start();

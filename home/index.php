@@ -1,4 +1,4 @@
-/* This is a PHP code that starts a session, includes necessary files for database connection and
+<!-- /* This is a PHP code that starts a session, includes necessary files for database connection and
 functions, checks if the user is logged in, and handles the logout functionality. It also includes a
 header and footer file for the HTML code. The HTML code displays a greeting message to the user and
 a logout button. When the user clicks on the logout button, the session is destroyed and the user is
@@ -7,7 +7,7 @@ redirected to the login page.
 Author: Nitin Pendekanti
 Functionality Set One (User Accounts)
 
-*/
+*/ -->
 <?php
 session_start();
 include("../connection.php");

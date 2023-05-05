@@ -1,4 +1,4 @@
-/* This is a PHP code that updates a review in a database. It starts by starting a session and
+<!-- /* This is a PHP code that updates a review in a database. It starts by starting a session and
 including necessary functions and headers. It then checks if the request method is POST and
 retrieves the necessary data from the form. If all fields are filled, it updates the review in the
 database and redirects to the index page. If there is an error, it displays an error message. It
@@ -7,7 +7,7 @@ user to update the review. Finally, it includes the footer.
 
 Author: Josef Munduchirakal
 Functionality Set Four: Reviews
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

@@ -1,4 +1,4 @@
-/* This is a PHP code that creates a form for users to submit a review for a barber. It starts by
+<!-- /* This is a PHP code that creates a form for users to submit a review for a barber. It starts by
 starting a session and including necessary functions and headers. It then checks if the request
 method is POST and retrieves the values submitted by the user. If all required fields are filled, it
 inserts the review data into the database using the `insert_review_data()` function. If the
@@ -7,7 +7,7 @@ not, it displays an error message.
 
 Author: Josef Munduchirakal
 Functionality Set Four: Reviews
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

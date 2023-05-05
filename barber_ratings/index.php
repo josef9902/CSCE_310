@@ -1,4 +1,4 @@
-/* This is a PHP code that displays a table of all reviews in a website. It starts by starting a
+<!-- /* This is a PHP code that displays a table of all reviews in a website. It starts by starting a
 session, requiring a functions file, and checking if the user is logged in. It then includes a
 header file for the appointments page. The code then displays a table with columns for ID, Barber,
 Customer, Rating, Description, and Actions. The data for the table is obtained by calling the
@@ -8,7 +8,7 @@ Customer, Rating, Description, and Actions. The data for the table is obtained b
 Author: Josef Munduchirakal
 Functionality Set Four: Reviews
 
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

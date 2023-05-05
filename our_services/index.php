@@ -1,4 +1,4 @@
-/* This is a PHP code that displays a table of services with their IDs, names, prices, and actions. It
+<!-- /* This is a PHP code that displays a table of services with their IDs, names, prices, and actions. It
 also includes a button to create a new service, but only if the user is an admin. The code starts by
 starting a session and requiring a functions file. It then checks if the user is a barber, admin, or
 customer using functions from the functions file. It includes a header file for the appointments
@@ -7,7 +7,7 @@ it includes a footer file.
 
 Author: Charles Walker
 Functionality Set Three: Services
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

@@ -1,10 +1,10 @@
-/* This is a PHP code that displays a table of reviews based on the user's role (customer, barber, or
+<!-- /* This is a PHP code that displays a table of reviews based on the user's role (customer, barber, or
 admin). It starts by starting a session and including a functions file. It then checks the user's
 role using functions like `is_customer()` and `is_barber()`.
 
 Author: Josef Munduchirakal
 Functionality Set Four: Reviews
-*/
+*/ -->
 <?php
 session_start();
 require_once '../functions.php';

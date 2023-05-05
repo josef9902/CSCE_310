@@ -1,4 +1,4 @@
-/* This is a PHP code block that updates the user's profile information in the database. It starts by
+<!-- /* This is a PHP code block that updates the user's profile information in the database. It starts by
 starting a session and including necessary files for database connection and functions. It then
 checks if the request method is POST and retrieves the user's input data from the form. If the user
 is a barber, it updates the service they offer. It then updates the user's information in the
@@ -8,7 +8,7 @@ redirects the user to the edit profile page.
 Author: Nitin Pendekanti
 Functionality Set One (User Accounts)
 
-*/
+*/ -->
 <?php
 session_start();
 include("../connection.php");

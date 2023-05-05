@@ -1,20 +1,12 @@
-/**
-* The function registers a new user by inserting their information into the database and redirects
-* them to the login page.
-*
-* @param location The "location" parameter is a user input field where the user can enter their
-* location information during the registration process. The input is validated using the
-* "is_valid_location" function to ensure that it only contains letters and spaces. The location
-* information is then stored in the database along with other user information.
-*
-* @return The code is a PHP script that handles user registration. It checks if the user has entered
+<!-- /**
+  The code is a PHP script that handles user registration. It checks if the user has entered
 * valid information, including a valid location, and inserts the user's information into the database.
 * It also assigns the user a user type (customer, barber, or admin) and inserts the user's ID into the
 * appropriate table. Finally, it redirects the user to the login page. The HTML code displays a form
 
 Author: Nitin Pendekanti
 Functionality Set One (User Accounts)
-*/
+*/ -->
 <?php
 session_start();
 
