@@ -1,3 +1,12 @@
+/* This is a PHP code that displays information about a barber appointment. It retrieves data from a
+database using SQL queries and displays it on a webpage using HTML and PHP. The code gets the barber
+name, customer name, service name, and appointment time from the database and displays it on the
+webpage. It also includes a header and footer file for the webpage.
+
+Author: Thierry David
+Functionality Set Two (Scheduling)
+
+*/
 <?php
 session_start();
 require_once '../functions.php';
@@ -25,8 +34,8 @@ $service_name_row = mysqli_fetch_assoc($service_name_result);
             <h2 class="pt-3"><?php echo 'CUSTOMER NAME: ' . $customer_row['FIRST_NAME'] . ' ' . $customer_row['LAST_NAME'] ?></p>
             </h2>
             <h2 class="pt-3"><?php echo 'SERVICE: ' . $service_name_row['SERV_NAME'] ?></p>
-            <h2 class="pt-3"><?php echo 'TIME: ' . date("F j, Y, g:i a", strtotime($row['TIME'])) ?></p>
-            </h2>
+                <h2 class="pt-3"><?php echo 'TIME: ' . date("F j, Y, g:i a", strtotime($row['TIME'])) ?></p>
+                </h2>
         </div>
     </div>
 

@@ -1,3 +1,15 @@
+/* This is a PHP code that updates a review in a database. It starts by starting a session and
+including necessary functions and headers. It then retrieves the review data from the database and
+checks if the request method is POST. If it is, it retrieves the review ID and other data from the
+form and updates the review in the database. If the update is successful, it displays a success
+message and redirects to the index page. If not, it displays an error message. The code also fetches
+available barber and customer IDs from the database and displays them in a form for the user to
+select. Finally, it includes a footer file.
+
+Author: Josef Munduchirakal
+Functionality Set Four: Reviews
+
+*/
 <?php
 session_start();
 require_once '../functions.php';

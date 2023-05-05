@@ -1,3 +1,13 @@
+/* This is a PHP code that updates a service in a database. It starts a session, includes necessary
+functions, checks if the user is logged in and their role (barber, admin, or customer), and includes
+a header file. It then gets the service data from the database and the ID of the service to be
+updated from the URL. If the request method is POST, it gets the new service name and price from the
+form, updates the service in the database, and redirects to the index page. If the form is not
+filled out completely, it displays an error message. Finally, it includes a footer file.
+
+Author: Charles Walker
+Functionality Set Three: Services
+*/
 <?php
 session_start();
 require_once '../functions.php';
