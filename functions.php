@@ -1,3 +1,11 @@
+
+/**
+The following functions are used for all four functionality sets, and are helper functions to
+create read, update, and delete entries in tables in the database. 
+
+THese functions were created by various group members
+*/
+
 <?php
 require_once('connection.php');
 
@@ -52,6 +60,8 @@ function get_all_data()
 
 /**
  * This function retries all barbers within the database and returns it as an array of results
+ * 
+ * Created by: Charles Walker (used for Functionality Set Three: Services)
  */
 function get_barber_rows()
 {
@@ -72,6 +82,8 @@ function get_barber_rows()
 
 /**
  * This function returns all barbers who provide a certain service
+ * 
+ * Created by: Charles Walker (used for Functionality Set Three: Services)
  */
 
 function get_matching_barbers($barbers, $serv_id)
@@ -101,6 +113,9 @@ function get_matching_barbers($barbers, $serv_id)
  * @return a string containing the first and last names of the barbers whose IDs are in the array
  * . The names are retrieved from the database using the provided  connection
  * object.
+ * 
+ * 
+ * Created by: Charles Walker (used for Functionality Set Three: Services)
  */
 function print_matching_barbers($matching_barbers, $conn)
 {
@@ -116,6 +131,9 @@ function print_matching_barbers($matching_barbers, $conn)
 /**
  * The function retrieves all service data from the database and displays it in a table format with
  * options to view, edit, and delete services if the user is an admin.
+ * 
+ * 
+ * Charles Walker (used for Functionality Set Three: Services)
  * 
  */
 
@@ -153,6 +171,9 @@ function get_all_service_data()
  * This function retrieves all review data from the database and displays it in a table format,
  * including the barber and customer names, rating, description, and options to view, edit, or delete
  * the review.
+ * 
+ * 
+ * Created by Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function get_all_review_data()
 {
@@ -202,6 +223,9 @@ function get_all_review_data()
  * This function retrieves all review data for a specific barber and displays it in a table format.
  * 
  * @param barber_id The ID of the barber for whom we want to retrieve all the reviews.
+ * 
+ * 
+ * Created by Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function get_all_review_data_by_barber($barber_id)
 {
@@ -249,6 +273,9 @@ function get_all_review_data_by_barber($barber_id)
  * options to view, edit, or delete each review.
  * 
  * @param customer_name_curr The current customer's ID for whom the reviews are being fetched.
+ * 
+ * 
+ * Created by Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function get_my_review_data($customer_name_curr)
 {
@@ -351,6 +378,8 @@ function get_all_edit_data()
  * 
  * @return a string of HTML options for a select element, where each option represents a barber's name
  * and ID.
+ * 
+ * Created by: Thierry David (used in various Functionality Sets)
  */
 function get_barber_options($conn)
 {
@@ -374,6 +403,9 @@ function get_barber_options($conn)
  * 
  * @return a string of HTML options for a select element, where each option represents a customer's
  * name and ID.
+ * 
+ * 
+ * Created by: Thierry David (used in various Functionality Sets)
  */
 function get_customer_options($conn)
 {
@@ -398,6 +430,8 @@ function get_customer_options($conn)
  * @return a string of HTML options for a select element, where each option represents a customer's
  * name and ID. The selected option is the one that matches the provided ``
  * parameter.
+ * 
+ * Created by: Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function get_customer_option($conn, $customer_name_curr)
 {
@@ -423,6 +457,9 @@ function get_customer_option($conn, $customer_name_curr)
  * @return a string variable named `` which contains HTML `<option>` tags for each
  * service in the database. The selected option is based on the service name associated with the
  * barber's ID stored in the `['USER_ID']` variable.
+ * 
+ * 
+ * Created by Nitin Pendekanti (used for Functionality Set One (User Accounts).
  */
 function get_services_choice($conn)
 {
@@ -485,6 +522,9 @@ function insert_data($conn, $barber_id, $customer_id, $time)
  * @param customer_id The ID of the customer who is leaving the review.
  * @param rating The rating given by the customer for the barber's service. It is a numerical value.
  * @param description The description of the review that the customer has left for the barber.
+ * 
+ * 
+ * Created by: Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function insert_review_data($conn, $barber_id, $customer_id, $rating, $description)
 {
@@ -514,6 +554,8 @@ function insert_review_data($conn, $barber_id, $customer_id, $rating, $descripti
  * @param conn The database connection object.
  * @param service_name The name of the service that needs to be inserted into the database.
  * @param price The price of a service that is being inserted into a database.
+ * 
+ * Created by: Charles Walker (used for Functionality Set Three: Services)
  */
 function insert_service_data($conn, $service_name, $price)
 {
@@ -563,6 +605,8 @@ function update_get()
  * 
  * @return an associative array containing the data of a single review from the database, based on the
  * REV_ID passed through the GET request.
+ * 
+ * Created by: Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function reviews_get()
 {
@@ -583,6 +627,8 @@ function reviews_get()
  * 
  * @return an associative array containing the details of a service with the specified ID. If the ID is
  * not valid or does not exist in the database, the function will not return anything.
+ * 
+ * Created by: Charles Walker (used for Functionality Set Three: Services)
  */
 function services_get()
 {
@@ -636,6 +682,8 @@ function update_appointment($id, $barber_id, $customer_id, $time)
  * @param rating The rating given by the customer for the barber's service. It is a numerical value
  * usually ranging from 1 to 5, with 1 being the lowest and 5 being the highest.
  * @param description The description of the review that needs to be updated.
+ * 
+ * Created by: Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function update_review($id, $barber_id, $customer_id, $rating, $description)
 {
@@ -664,6 +712,8 @@ function update_review($id, $barber_id, $customer_id, $rating, $description)
  * @param conn The database connection object.
  * @param serv_name The name of the service that needs to be updated.
  * @param price The price of the service being updated.
+ * 
+ * Created by: Charles Walker (used for Functionality Set Three: Services)
  */
 function update_service($id, $conn, $serv_name, $price)
 {
@@ -708,6 +758,8 @@ function delete()
 /**
  * This function deletes a review from a database based on its ID and displays a success or error
  * message.
+ * 
+ * Created by: Josef Munduchirakal (used for Functionality Set Four: Reviews)
  */
 function delete_review()
 {
@@ -728,6 +780,8 @@ function delete_review()
 /**
  * This function deletes a service from the SERVICES table in a database, but only if it is not
  * currently being used by a barber in the BARBER table.
+ * 
+ * Created by: Charles Walker (used for Functionality Set Three: Services)
  */
 function delete_service()
 {
@@ -762,6 +816,8 @@ function delete_service()
  * @return the user data as an associative array if the user is logged in and their data is found in
  * the database. If the user is not logged in, the function redirects them to the login page and
  * terminates the script.
+ * 
+ * Created by Nitin Pendekanti (used for Functionality Set One (User Accounts).
  */
 function check_if_user_login($conn)
 {
@@ -792,6 +848,8 @@ function check_if_user_login($conn)
  * @return The function is_admin returns a boolean value (true or false) depending on whether the user
  * with the given user_id exists in the ADMIN table of the database connected to by the 
  * parameter. If the user exists, the function returns true, otherwise it returns false.
+ * 
+ * Created by Nitin Pendekanti (used for Functionality Set One (User Accounts).
  */
 function is_admin($conn, $user_id)
 {
@@ -817,6 +875,8 @@ function is_admin($conn, $user_id)
  * @return The function `is_barber` returns a boolean value (`true` or `false`) depending on whether
  * the given `` exists in the `BARBER` table of the database connected to by ``. If the
  * user exists, the function returns `true`, otherwise it returns `false`.
+ * 
+ * Created by Nitin Pendekanti (used for Functionality Set One (User Accounts).
  */
 function is_barber($conn, $user_id)
 {
@@ -840,6 +900,8 @@ function is_barber($conn, $user_id)
  * 
  * @return a boolean value (true or false) depending on whether the given user ID exists in the
  * "CUSTOMER" table of the database connected to by the given connection object.
+ * 
+ * Created by Nitin Pendekanti (used for Functionality Set One (User Accounts).
  */
 function is_customer($conn, $user_id)
 {

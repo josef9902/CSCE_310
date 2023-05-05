@@ -1,3 +1,13 @@
+/* This PHP code is deleting a user account from a database and destroying the session associated with
+that user. It first checks if the user is a barber, admin, or customer, and then removes all
+references to the user in the database, including appointments, reviews, and any entries in the
+BARBERS and CUSTOMERS tables. Finally, it destroys the session and redirects the user to the login
+page, displaying a JavaScript alert to confirm that the account has been deleted.
+
+Author: Nitin Pendekanti
+Functionality Set One (User Accounts)
+
+*/
 <?php
 session_start();
 include("../connection.php");

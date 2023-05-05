@@ -1,3 +1,14 @@
+/* This is a PHP code that displays a form for editing user profile information. It starts by starting
+a session and including necessary files for database connection and functions. It then checks if the
+user is logged in and if they are a barber, admin, or customer. If the user has any error or success
+messages, they are displayed. If the user is a barber, a dropdown menu for selecting services is
+displayed. The form includes fields for first name, last name, phone number, location, and password.
+Finally, there are buttons for saving changes and deleting the account.
+
+Author: Nitin Pendekanti
+Functionality Set One (User Accounts)
+
+*/
 <?php
 session_start();
 include("../connection.php");
@@ -9,17 +20,17 @@ $customer_check = is_customer($conn, $user_dta['USER_ID']);
 include('../appointments/header.php');
 
 if (isset($_SESSION["ERROR_MESSAGE"])) {
-    echo "<div class='alert alert-danger' role='alert'>" . $_SESSION["ERROR_MESSAGE"] . "</div>";
-    unset($_SESSION["ERROR_MESSAGE"]);
+  echo "<div class='alert alert-danger' role='alert'>" . $_SESSION["ERROR_MESSAGE"] . "</div>";
+  unset($_SESSION["ERROR_MESSAGE"]);
 }
 
 if (isset($_SESSION["SUCCESS_MESSAGE"])) {
-    echo "<div class='alert alert-success' role='alert'>" . $_SESSION["SUCCESS_MESSAGE"] . "</div>";
-    unset($_SESSION["SUCCESS_MESSAGE"]);
+  echo "<div class='alert alert-success' role='alert'>" . $_SESSION["SUCCESS_MESSAGE"] . "</div>";
+  unset($_SESSION["SUCCESS_MESSAGE"]);
 }
 
 if ($barber_check) {
-    $service_options = get_services_choice($conn);
+  $service_options = get_services_choice($conn);
 }
 ?>
 <form method="post" action="edit-profile-result.php">
@@ -40,17 +51,17 @@ if ($barber_check) {
     <input type="text" class="form-control" id="location" name="location" value="<?php echo $user_dta['LOCATION']; ?>">
   </div>
   <?php if (is_barber($conn, $_SESSION['USER_ID'])) : ?>
-  <div class="form-group">
-    <label for="service">Service:</label>
-    <select name="service" class="form-control" id="service">
-    <?php echo $service_options; ?>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="service">Service:</label>
+      <select name="service" class="form-control" id="service">
+        <?php echo $service_options; ?>
+      </select>
+    </div>
   <?php endif; ?>
   <div class="form-group">
     <label for="password">Password:</label>
     <input type="password" class="form-control" id="password" name="password">
   </div>
   <button type="submit" class="btn btn-primary">Save Changes</button>
-  <a href="delete-account.php" class = "btn btn-danger">Delete Account</a>
+  <a href="delete-account.php" class="btn btn-danger">Delete Account</a>
 </form>

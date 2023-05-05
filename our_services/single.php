@@ -1,3 +1,14 @@
+/* This is a PHP code that displays information about a specific service, including its name, price,
+and available barbers who can provide the service. It starts by checking if the user is logged in
+and their role (barber, admin, or customer) using functions from an external file. It then retrieves
+information about the service from the database using its ID, including its name and price. It also
+retrieves a list of all barbers and filters them to only show those who can provide the service.
+Finally, it displays the information in an HTML format using Bootstrap classes and includes a footer
+file.
+
+Author: Charles Walker
+Functionality Set Three: Services
+*/
 <?php
 session_start();
 require_once '../functions.php';
@@ -37,6 +48,6 @@ $theVariable = print_matching_barbers($matching_barbers, $conn);
 
 
 
-<?php
-include('footer.php');
-?>
+    <?php
+    include('footer.php');
+    ?>
