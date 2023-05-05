@@ -13,6 +13,9 @@
 4. Extract the following folders/files from the repository, and put it into the htdocs folder:
 - appointments/
 - home/
+- our_services/
+- my_reviews/
+- barber_ratings/
 - connection.php
 - functions.php
 <img width="766" alt="image" src="https://user-images.githubusercontent.com/60299227/234410605-25b293ff-8bc8-4fee-9bbf-52622570f79f.png">
@@ -29,6 +32,6 @@
 6. Click on import:
 <img width="93" alt="image" src="https://user-images.githubusercontent.com/60299227/234411481-79214612-7713-40e8-8908-403c74b65db4.png">
 
-7. Import the group10.sal file and click import again
+7. Import the group10.sql file (in the database folder) and click import again
 
 <img width="1076" alt="image" src="https://user-images.githubusercontent.com/60299227/234414553-2ee8ee28-9ec0-40a6-983e-c5b281258fba.png">
