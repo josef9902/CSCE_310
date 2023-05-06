@@ -1,5 +1,9 @@
 # CSCE_310
 
+
+## Report 
+[Direct Link to Report](CSCE%20310%20Final%20Project%20Report.pdf)
+
 ## Installation/Setup Process
 
 1. Install XAMPP From the official website (https://www.apachefriends.org/download.html)
